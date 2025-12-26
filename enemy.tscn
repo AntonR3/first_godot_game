@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqa14du2riiid"]
+
+[ext_resource type="Script" uid="uid://c1cy3dswjut8a" path="res://enemy.gd" id="1_4gyqm"]
+[ext_resource type="PackedScene" uid="uid://cjgr50rtb6b8g" path="res://enemy_model.tscn" id="1_7k104"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4gyqm"]
+height = 1.8
+radius = 0.337402
+
+[node name="enemy" type="RigidBody3D"]
+mass = 80.0
+script = ExtResource("1_4gyqm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.925, 0)
+shape = SubResource("CylinderShape3D_4gyqm")
+
+[node name="AnimationLibrary_Godot_Standard" parent="." instance=ExtResource("1_7k104")]
+unique_name_in_owner = true

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://dquvp8xag0deg"]
+
+[ext_resource type="PackedScene" uid="uid://bt6sg5oai688n" path="res://spieler.tscn" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://bdduqqn6whp7e" path="res://game.gd" id="1_feb5d"]
+[ext_resource type="PackedScene" uid="uid://cqa14du2riiid" path="res://enemy.tscn" id="3_feb5d"]
+
+[sub_resource type="Environment" id="Environment_fc0e3"]
+tonemap_mode = 2
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.23793, 0.261238, 0.297879, 1)
+fog_density = 1.0
+fog_height_density = 100.0
+fog_depth_curve = 3.73213
+fog_depth_begin = 0.0
+fog_depth_end = 16.0
+
+[node name="game" type="Node3D"]
+script = ExtResource("1_feb5d")
+
+[node name="spieler" parent="." instance=ExtResource("1_80nbo")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.5, 1)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, -0.110896, 9.6549, -0.542886)
+light_color = Color(1, 1, 0.807843, 1)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fc0e3")
+
+[node name="enemy" parent="." instance=ExtResource("3_feb5d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -7)
+
+[node name="tiles" type="Node3D" parent="."]
+unique_name_in_owner = true
